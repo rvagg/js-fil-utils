@@ -1,4 +1,4 @@
-# js-fil-utils
+# js-fil-utils (npm: `@rvagg/fil-utils`)
 
 Miscellaneous JavaScript Filecoin utilities implementing pieces of the Filecoin proofs based on the Rust implementations at https://github.com/filecoin-project/rust-fil-proofs/
 

@@ -1,0 +1,22 @@
+{
+  "name": "@rvagg/fil-utils",
+  "version": "0.0.0",
+  "description": "Miscellaneous JavaScript Filecoin proofs utilities",
+  "main": "commp.js",
+  "scripts": {
+    "test": "echo \"Error: TODO\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rvagg/js-fil-utils.git"
+  },
+  "keywords": [
+    "filecoin"
+  ],
+  "author": "Rod <rod@vagg.org> (http://r.va.gg/)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/rvagg/js-fil-utils/issues"
+  },
+  "homepage": "https://github.com/rvagg/js-fil-utils#readme"
+}
