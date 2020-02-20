@@ -7,16 +7,26 @@ if (!process.argv[2]) {
   process.exit(1)
 }
 
+function toMb (size) {
+  return `${(Math.round((size / 1024 / 1024) * 100) / 100).toLocaleString()} Mb`
+}
+
 commp(process.argv[2])
   .then((result) => {
-    console.log(`CommP for ${process.argv[2]}: ${result.toString('hex')}`)
+    console.log(
+`${process.argv[2]}:
+\tSize: ${toMb(result.size)}
+\tPadded Size: ${toMb(result.paddedSize)}
+\tPiece Size: ${toMb(result.pieceSize)}
+\tCommP: ${result.commp.toString('hex')}`
+    )
   })
   .catch((err) => {
     console.error(err)
     process.exit(1)
   })
 
-/*
+/* write out a zero padded version and an fr32 version
 const { Readable } = require('stream')
 const fs = require('fs')
 const { zeroPadReader } = require('./zero-padded')
