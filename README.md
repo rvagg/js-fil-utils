@@ -13,11 +13,11 @@ Miscellaneous JavaScript Filecoin utilities implementing pieces of the Filecoin 
 ### Contents
 
  * [`async commp(stream)`](#commp)
- * [`async async commp.fr32PadReader`](#async__commp__fr32PadReader)
- * [`async commp.merkleRoot`](#commp__merkleRoot)
- * [`commp.pieceSizeFromRaw`](#commp__pieceSizeFromRaw)
- * [`commp.zeroPaddedSizeFromRaw`](#commp__zeroPaddedSizeFromRaw)
- * [`async commp.zeroPadReader`](#commp__zeroPadReader)
+ * [`commp.fr32PadReader(stream)`](#commp__fr32PadReader__stream__)
+ * [`async commp.merkleRoot(stream)`](#commp__merkleRoot__stream__)
+ * [`commp.pieceSizeFromRaw(size)`](#commp__pieceSizeFromRaw__size__)
+ * [`commp.zeroPaddedSizeFromRaw(size)`](#commp__zeroPaddedSizeFromRaw__size__)
+ * [`commp.zeroPadReader(stream)`](#commp__zeroPadReader__stream__)
 
 <a name="commp"></a>
 ### `async commp(stream)`
@@ -31,8 +31,8 @@ Commitment") using stream processing.
 
 **Return value**  _(`Object`)_: an object of the form `{ size, paddedSize, pieceSize, commp }`
 
-<a name="async__commp__fr32PadReader"></a>
-### `async async commp.fr32PadReader`
+<a name="commp__fr32PadReader__stream__"></a>
+### `commp.fr32PadReader(stream)`
 
 Given a stream or async iterator (of `Buffer`s), return a new
 async iterator that adds Fr32 padding. For every 254 bits, an additional 2
@@ -46,8 +46,8 @@ zero bits are added.
 
 **Return value**  _(`AsyncIterator.<Buffer>`)_
 
-<a name="commp__merkleRoot"></a>
-### `async commp.merkleRoot`
+<a name="commp__merkleRoot__stream__"></a>
+### `async commp.merkleRoot(stream)`
 
 Given a stream or async iterator (of `Buffer`s), return a merkle
 root as a `Buffer` using a 32-byte chunked sha256 binary tree.
@@ -60,8 +60,8 @@ root as a `Buffer` using a 32-byte chunked sha256 binary tree.
 
 **Return value**  _(`Buffer`)_
 
-<a name="commp__pieceSizeFromRaw"></a>
-### `commp.pieceSizeFromRaw`
+<a name="commp__pieceSizeFromRaw__size__"></a>
+### `commp.pieceSizeFromRaw(size)`
 
 Determine the piece size for a given block of data. Does not
 account for Fr32 padding. A simple rounding up to the next pow2 size.
@@ -73,8 +73,8 @@ account for Fr32 padding. A simple rounding up to the next pow2 size.
 
 **Return value**  _(`number`)_
 
-<a name="commp__zeroPaddedSizeFromRaw"></a>
-### `commp.zeroPaddedSizeFromRaw`
+<a name="commp__zeroPaddedSizeFromRaw__size__"></a>
+### `commp.zeroPaddedSizeFromRaw(size)`
 
 Determine the additional bytes of zeroed padding to append to the
 end of a resource of `size` length in order to fit within a pow2 piece while
@@ -86,8 +86,8 @@ leaving enough room for Fr32 padding (2 bits per 254).
 
 **Return value**  _(`number`)_
 
-<a name="commp__zeroPadReader"></a>
-### `async commp.zeroPadReader`
+<a name="commp__zeroPadReader__stream__"></a>
+### `commp.zeroPadReader(stream)`
 
 Given a stream or async iterator (of `Buffer`s), return a new
 async iterator that additional zero-padding at the end of an amount

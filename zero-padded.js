@@ -1,7 +1,7 @@
 const fr32oh = 254 / 256 // fr32 needs 2 bits per 256, so we make room for that
 
 /**
- * @name commp.pieceSizeFromRaw
+ * @name commp.pieceSizeFromRaw(size)
  * @description Determine the piece size for a given block of data. Does not
  * account for Fr32 padding. A simple rounding up to the next pow2 size.
  * @param {number} size the size of the original resource
@@ -13,7 +13,7 @@ function pieceSizeFromRaw (size, next) {
 }
 
 /**
- * @name commp.zeroPaddedSizeFromRaw
+ * @name commp.zeroPaddedSizeFromRaw(size)
  * @description Determine the additional bytes of zeroed padding to append to the
  * end of a resource of `size` length in order to fit within a pow2 piece while
  * leaving enough room for Fr32 padding (2 bits per 254).
@@ -28,7 +28,7 @@ function zeroPaddedSizeFromRaw (size) {
 }
 
 /**
- * @name commp.zeroPadReader
+ * @name commp.zeroPadReader(stream)
  * @description Given a stream or async iterator (of `Buffer`s), return a new
  * async iterator that additional zero-padding at the end of an amount
  * appropriate to fit in a pow2 Fr32 padded piece. See also {@zeroPaddedSize}.
@@ -36,7 +36,6 @@ function zeroPaddedSizeFromRaw (size) {
  * of the original source.
  * @param {number} size the expected size, in bytes, of the original source.
  * @returns {AsyncIterator<Buffer>}
- * @async
  */
 async function * zeroPadReader (instream, size) {
   const padSize = zeroPaddedSizeFromRaw(size)

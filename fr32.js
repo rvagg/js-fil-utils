@@ -1,5 +1,5 @@
 /**
- * @name async commp.fr32PadReader
+ * @name commp.fr32PadReader(stream)
  * @description Given a stream or async iterator (of `Buffer`s), return a new
  * async iterator that adds Fr32 padding. For every 254 bits, an additional 2
  * zero bits are added.
@@ -7,7 +7,6 @@
  * of the original source, zero-padded to an appropriate length to fit in a pow2
  * sized piece after Fr32 padding.
  * @returns {AsyncIterator<Buffer>}
- * @async
  */
 async function * fr32PadReader (instream) {
   let bytes = 0 // number of bytes we've processed so far, used for tracking the 254 padding

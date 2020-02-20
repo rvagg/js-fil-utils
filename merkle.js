@@ -67,7 +67,7 @@ async function * primedIterIter (h1, h2, iter) {
 }
 
 /**
- * @name commp.merkleRoot
+ * @name commp.merkleRoot(stream)
  * @description Given a stream or async iterator (of `Buffer`s), return a merkle
  * root as a `Buffer` using a 32-byte chunked sha256 binary tree.
  * @param {Stream|AsyncIterator<Buffer>} stream a stream or async iterator of
